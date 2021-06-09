@@ -37,13 +37,13 @@ Exemplo de Entrada<br>
 3 2<br>
 0<br>
 <br>
-Exemplo de Saída<br>
+Exemplo de Saída<br><br>
 Cidade# 1:<br>
 2-5 3-7 3-13<br>
-Consumo medio: 9.00 m3.<br>
+Consumo medio: 9.00 m3.<br><br>
 Cidade# 2:<br>
 5-10 6-11 2-20 1-25<br>
-Consumo medio: 13.28 m3.<br>
+Consumo medio: 13.28 m3.<br><br>
 Cidade# 3:<br>
 3-0 1-1<br>
 Consumo medio: 0.75 m3.<br>
