@@ -2,6 +2,7 @@ package estiagem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.SortedSet;
@@ -80,12 +81,12 @@ public class Cidade {
 		for (Integer ordem : Ordem) {
 			
 			String espaco = (i == Ordem.size()) ? "\n" : " ";
-			var media = (int) imovel.get(ordem).getMedia();			 
-			System.out.print( imovel.get(ordem).getMoradores()+"-"+ Integer.toString(media) + espaco );
+			var media = imovel.get(ordem).getMedia();			 
+			System.out.print( imovel.get(ordem).getMoradores()+"-"+ String.format(Locale.US,"%.0f",media) + espaco );
 			i++;
 		}		
 		
-		System.out.print("Consumo medio: " + Math.floor( (this.mediaConsumoCidade / this.totalMoradoresCidade) * 100) / 100 + " m3.");
+		System.out.print("Consumo medio: " + String.format(Locale.US,"%.2f",( Math.floor( (this.mediaConsumoCidade / this.totalMoradoresCidade) * 100) / 100)) + " m3.");
 		//System.out.printf("Consumo medio: %.2f m3.", (this.mediaConsumoCidade / this.totalMoradoresCidade));
 		
 		
