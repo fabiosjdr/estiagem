@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Controller {	
 	
-	
+	Boolean agrupar = true;
 	ArrayList <Cidade> cidades = new ArrayList<>();
 	
 	void adicionarInformacao(Integer moradores, Double consumo) {
@@ -33,15 +33,28 @@ public class Controller {
 	public void imprimir() {
 		
  		int i = 1;		
-		for (Cidade cidade : cidades) {
+ 		
+ 		
+ 		for (Cidade cidade : cidades) {
+ 			
+ 			if(this.agrupar) {
+ 				
+ 				cidade.OrdenarImpressao();
+ 				cidade.Imprimir();
+ 				
+ 	 		}else {
+ 	 			
+ 	 			cidade.OrdenarImpressao2();
+ 				cidade.Imprimir2();
+ 	 		}
 			
-			cidade.OrdenarImpressao();
-			cidade.Imprimir();
 			
 			if(i < cidades.size()) {
 				System.out.print("\n\n");
 			}
 			i++;
 		}
+ 		 
+		
 	}
 }

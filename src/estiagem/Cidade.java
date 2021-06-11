@@ -15,20 +15,22 @@ public class Cidade {
 	double mediaConsumoCidade;
 	int totalMoradoresCidade;
 	
-	ArrayList <Imovel> imovel = new ArrayList<>();
-	ArrayList <Integer> Ordem = new ArrayList<>();
-	Map<Integer,Double> medias = new HashMap<>();
+	ArrayList <Imovel>  imovel 		 	= new ArrayList<>();
+	ArrayList <Double>  OrdemAgrupada 	= new ArrayList<>();
+	ArrayList <Integer> Ordem 			= new ArrayList<>();
+	Map<Integer,Double> medias 		 	= new HashMap<>();
+	Map<Double,Integer> mediasAgrupadas = new HashMap<>();
 	
 	Cidade(int qtd, int id) {
 		
 		this.totalMoradoresCidade = 0;
 		this.mediaConsumoCidade = 0;
 		this.setQuantidadeImoveis(qtd);		
-		this.setIdImovel(id);
+		this.setIdCidade(id);
 		
 	}
 	
-	public void setIdImovel(int id) {
+	public void setIdCidade(int id) {
 		this.id = id;
 	}
 	
@@ -47,6 +49,14 @@ public class Cidade {
 		
 		this.imovel.add(imovel);
 		this.medias.put(this.imovel.size() -1  , imovel.media);
+
+		if(this.mediasAgrupadas.containsKey(imovel.media)) {
+			int moradoresPorMedia = this.mediasAgrupadas.get(imovel.media).intValue();
+			this.mediasAgrupadas.put(imovel.media, (moradoresPorMedia + imovel.moradores));
+		}else {
+			this.mediasAgrupadas.put(imovel.media,imovel.moradores);
+		}
+		
 	}
 	
 	public ArrayList<Imovel> getImoveis() {
@@ -54,7 +64,7 @@ public class Cidade {
 		return this.imovel;
 	}
 
-	protected void OrdenarImpressao() {
+	protected void OrdenarImpressao2() {
 		
 		SortedSet<Double> MediaOrdenada = new TreeSet<>(medias.values());
 		//System.out.println(MediaOrdenada);
@@ -73,7 +83,35 @@ public class Cidade {
 		
 	}
 	
-	public void Imprimir() {
+	protected void OrdenarImpressao() {		
+		
+		SortedSet<Double> MediaOrdenada = new TreeSet<>(mediasAgrupadas.keySet());		
+				
+		for (Double media : MediaOrdenada) {			
+			this.OrdemAgrupada.add(media);
+		}
+	}
+	
+	public void Imprimir(){
+		
+		System.out.println("Cidade# "+ this.id);		
+		int i = 1; 
+		
+		for (Double ordem : OrdemAgrupada) {			
+			String espaco = (i == OrdemAgrupada.size()) ? "\n" : " ";
+			var media =  ordem;
+			var morad = mediasAgrupadas.get(ordem).intValue();
+			System.out.print( Integer.toString(morad)  +"-"+ String.format(Locale.US,"%.0f",media) + espaco );
+			i++;
+		}		
+		
+		System.out.print("Consumo medio: " + String.format(Locale.US,"%.2f",( Math.floor( (this.mediaConsumoCidade / this.totalMoradoresCidade) * 100) / 100)) + " m3.");
+		//System.out.printf("Consumo medio: %.2f m3.", (this.mediaConsumoCidade / this.totalMoradoresCidade));
+		
+		
+	}
+
+	public void Imprimir2() {
 		
 		
 		System.out.println("Cidade# "+ this.id);		

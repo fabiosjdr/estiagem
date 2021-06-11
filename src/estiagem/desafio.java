@@ -14,6 +14,7 @@ public class desafio {
 			    Scanner myReader = new Scanner(myObj);
 				
 			    Controller controller = new Controller();
+			    controller.agrupar = true;
 			    
 			    while (myReader.hasNextLine()) {
 			    	
