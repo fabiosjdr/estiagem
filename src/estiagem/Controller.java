@@ -32,7 +32,7 @@ public class Controller {
 	
 	public void imprimir() {
 		
-		int i = 1;		
+ 		int i = 1;		
 		for (Cidade cidade : cidades) {
 			
 			cidade.OrdenarImpressao();

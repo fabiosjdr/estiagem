@@ -63,7 +63,7 @@ public class Cidade {
 			
 			for(Entry<Integer, Double> entry: medias.entrySet()) {
 				
-				if(entry.getValue() == media ) {
+				if(entry.getValue().equals(media)  ) {
 					this.Ordem.add( entry.getKey() );
 				}
 				
