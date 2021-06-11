@@ -30,7 +30,7 @@ public class desafio {
 			    		}
 			    							   
 					    
-			    	}else if(info != ""){		    		
+			    	}else if(! info.isEmpty() ){		    		
 			    		
 			    		var instrucao = info.split(" ");
 			    		var moradores = Integer.parseInt(instrucao[0]);
